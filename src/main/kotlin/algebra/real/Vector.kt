@@ -18,15 +18,11 @@ data class Vector(private val v: List<Double>) {
         return Vector(this.v.mapIndexed { i, x -> x + other[i] })
     }
 
-    operator fun times(scalar: Double): Vector {
-        return Vector(this.v.map{it * scalar})
-    }
+    operator fun times(scalar: Double): Vector = Vector(this.v.map{it * scalar})
 
     infix fun dot(other: Vector): Double {
         if (this.length != other.length) return throw UnsupportedOperationException()
-        return this.v.foldIndexed(0.0) { index, acc, x ->
-            println("$index $acc $x ${other[index]}")
-            acc + x * other[index] }
+        return this.v.foldIndexed(0.0) { index, acc, x -> acc + x * other[index] }
     }
 
     override fun toString(): String = v.toString().replace("[", "(").replace("]", ")")
