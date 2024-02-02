@@ -5,7 +5,6 @@ import kotlin.test.assertEquals
 import kotlin.test.fail
 
 class VectorTests {
-
     @Test
     fun `get from vector`() {
         val v = Vector(listOf(1.0, 2.0, 3.0))
