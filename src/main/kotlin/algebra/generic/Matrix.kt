@@ -41,10 +41,7 @@ data class Matrix<T>(val plus: (T, T) -> T, val times: (T, T) -> T, private val 
     operator fun times(other: Matrix<T>): Matrix<T> {
         if (this.numColumns != other.numRows) throw UnsupportedOperationException()
         return this.copy(
-            vs =
-                vs.map { v ->
-                    Vector(plus, times, (0..<other.numColumns).map { i2 -> v dot other.getColumn(i2) })
-                },
+            vs = vs.map { v -> Vector(plus, times, (0..<other.numColumns).map { i2 -> v dot other.getColumn(i2) }) },
         )
     }
 
